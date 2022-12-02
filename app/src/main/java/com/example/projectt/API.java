@@ -22,7 +22,7 @@ public class API {
     static Context context;
     static String baseURL;
     static RequestQueue queue;
-    static boolean  isSignedIn;
+    static boolean isSignedIn;
     static String firstName;
     static String lastName;
     static String phone;
@@ -40,11 +40,11 @@ public class API {
 
     }
 
-    public static void getNodes(){
+    public static void getNodes(VolleyCallBack callBack) {
 
 
         //String url ="http://
-        String url = baseURL + "nodeall/" + mail +"/"+ password_encrypted;
+        String url = baseURL + "nodeall/" + mail + "/" + password_encrypted;
 
         // Request a string response from the provided URL.
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -66,7 +66,7 @@ public class API {
 
                             }
 
-
+                            callBack.onSuccess();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -76,6 +76,7 @@ public class API {
             public void onErrorResponse(VolleyError error) {
                 //textViewResult.setText("That didn't work!"+ error.toString());
                 Log.e("Error Response ", error.toString());
+                callBack.onFail();
             }
         });
 
@@ -83,10 +84,10 @@ public class API {
 
     }
 
-    public static void getAllCargos(){
+    public static void getAllCargos() {
 
         //String url ="http://
-        String url = baseURL+"cargoall/" + mail +"/"+ password_encrypted;
+        String url = baseURL + "cargoall/" + mail + "/" + password_encrypted;
 
         // Request a string response from the provided URL.
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -125,7 +126,7 @@ public class API {
 
     }
 
-    public static void signUp(final VolleyCallBack callBack,String firstName,String lastName,String password,String email,String address,String phone,String nationalID ){
+    public static void signUp(final VolleyCallBack callBack, String firstName, String lastName, String password, String email, String address, String phone, String nationalID) {
         try {
             API.password_encrypted = Encriptions.encText(password);
             API.firstName = firstName;
@@ -139,8 +140,9 @@ public class API {
             e.printStackTrace();
         }
         //String url ="http://
-        String url = baseURL+"signup/"+firstName+"/"+lastName+"/"+password_encrypted+"/"+email+"/"+address+"/"+phone+"/"+nationalID;
-        Log.e("SignUp Request","Request Sent");
+        String url = baseURL + "signup/" + firstName + "/" + lastName + "/" + password_encrypted + "/" + email + "/" + address + "/" + phone + "/" + nationalID;
+        Log.e("SignUp Request", "Request Sent");
+        Log.e("SignUp Request", url);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -150,13 +152,13 @@ public class API {
                         try {
                             JSONObject jsonArray = response.getJSONObject("ok");
                             //TODO print ok message
-                            Log.e("SignUp Request","User Created");
+                            Log.e("SignUp Request", "User Created");
                             callBack.onSuccess();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Log.e("SignUp Request",e.toString());
-                            Log.e("SignUp Request","Something Worng I can feel It");
+                            Log.e("SignUp Request", e.toString());
+                            Log.e("SignUp Request", "Something Worng I can feel It");
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -168,18 +170,19 @@ public class API {
                 //get response body and parse with appropriate encoding
 
                 try {
-                callBack.onFail();
+                    callBack.onFail();
 
-                if(error.networkResponse.data!=null) {
-                    try {
-                        body = new String(error.networkResponse.data,"UTF-8");
-                        Log.e("Sigup Error",body+" CODE: "+statusCode);
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    }}
+                    if (error.networkResponse.data != null) {
+                        try {
+                            body = new String(error.networkResponse.data, "UTF-8");
+                            Log.e("Sigup Error", body + " CODE: " + statusCode);
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                    }
 
-                }catch (Exception e){
-                    Log.e("error response",e.toString());
+                } catch (Exception e) {
+                    Log.e("error response", e.toString());
 
                 }
 
@@ -191,11 +194,11 @@ public class API {
 
     }
 
-    public static void addCargo(int ownerID,int reciverID,String type,double weight,double volume,int nodeID,String status){
+    public static void addCargo(int ownerID, int reciverID, String type, double weight, double volume, int nodeID, String status) {
 
 
-        String url = baseURL+"cargoadd/"+ mail +"/"+ password_encrypted +"/"+ownerID+"/"+reciverID+"/"+type+"/"+weight+"/"+volume+"/"+nodeID+"/"+status;
-        Log.e("AddCargo Request","Request Sent");
+        String url = baseURL + "cargoadd/" + mail + "/" + password_encrypted + "/" + ownerID + "/" + reciverID + "/" + type + "/" + weight + "/" + volume + "/" + nodeID + "/" + status;
+        Log.e("AddCargo Request", "Request Sent");
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -210,18 +213,20 @@ public class API {
                             e.printStackTrace();
                             Log.e("AddCargo Request", e.toString());
                             Log.e("AddCargo Request", "Something Worng I can feel It");
-                        }}},new Response.ErrorListener() {
+                        }
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 String body;
                 //get status code here
 
                 //get response body and parse with appropriate encoding
-                if(error.networkResponse.data!=null) {
+                if (error.networkResponse.data != null) {
                     try {
                         String statusCode = String.valueOf(error.networkResponse.statusCode);
-                        body = new String(error.networkResponse.data,"UTF-8");
-                        Log.e("Add Cargo Error",body+" CODE: "+statusCode);
+                        body = new String(error.networkResponse.data, "UTF-8");
+                        Log.e("Add Cargo Error", body + " CODE: " + statusCode);
                     } catch (Exception e) {
                         e.printStackTrace();
                         Log.e("AddCargo Request", e.toString());
@@ -234,17 +239,13 @@ public class API {
         queue.add(jsonObjectRequest);
 
 
-
-
-
-
     }
 
 
     public static boolean signIn(final VolleyCallBack callBack) {
 
-        String url = baseURL+"login/"+ mail +"/"+ password_encrypted;
-        Log.e("signIn Request","Request Sent");
+        String url = baseURL + "login/" + mail + "/" + password_encrypted;
+        Log.e("signIn Request", "Request Sent");
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -262,31 +263,32 @@ public class API {
                             user.setBalance(jsonArray.getDouble("Balance"));
                             user.setStar(jsonArray.getDouble("Star"));
 
-                            Log.e("Sigın Request", user.getName()+" "+user.getLastname());
+                            Log.e("Sigın Request", user.getName() + " " + user.getLastname());
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
 
 
-
                         //textViewResult.setText("Response is: "+ response.toString());
                         Log.e("Login Request", response.toString());
                         callBack.onSuccess();
-                       }},new Response.ErrorListener() {
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 API.isSignedIn = false;
                 String body;
                 //get status code here
-                String errorstr =  error.toString();
-                Log.e("Volley error",errorstr);
+                String errorstr = error.toString();
+                Log.e("Volley error", errorstr);
+                callBack.onFail();
                 //get response body and parse with appropriate encoding
                 try {
-                    if(error.networkResponse.data!=null) {
+                    if (error.networkResponse.data != null) {
                         String statusCode = String.valueOf(error.networkResponse.statusCode);
-                        body = new String(error.networkResponse.data,"UTF-8");
-                        Log.e("Login Error",body+" CODE: "+statusCode);
+                        body = new String(error.networkResponse.data, "UTF-8");
+                        Log.e("Login Error", body + " CODE: " + statusCode);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -294,13 +296,10 @@ public class API {
                 }
 
 
-
                 //TODO print error message USER EXİSTS
             }
         });
         queue.add(jsonObjectRequest);
-
-
 
 
         return isSignedIn;

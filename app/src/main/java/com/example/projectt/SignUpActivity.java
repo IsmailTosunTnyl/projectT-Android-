@@ -75,24 +75,31 @@ public class SignUpActivity extends AppCompatActivity {
                     password_text.setError("Passwords do not match");
                     isAllValid = false;
                 }
+                try {
 
-                if (isAllValid) {
-                    API api = new API("ismail", "Tanyeli6060", SignUpActivity.this);
-                    api.signUp(new VolleyCallBack() {
-                        @Override
-                        public void onSuccess() {
-                            Log.e("SignUp", "-------Success------");
-                        }
+                    if (isAllValid) {
+                        API api = new API(email, password, SignUpActivity.this);
+                        api.signUp(new VolleyCallBack() {
+                            @Override
+                            public void onSuccess() {
+                                Log.e("SignUp", "-------Success------");
+                            }
 
-                        @Override
-                        public void onFail() {
-                            Log.e("SignUp", "-------Fail------");
-                            email_text.setError("Email already exists");
-                        }
-                    }, first_name, last_name, email, password, phone, address, national_id);
+                            @Override
+                            public void onFail() {
+                                Log.e("SignUp", "-------Fail------");
+                                email_text.setError("Email already exists");
+                            }
+                        }, first_name, last_name, password,email,  address, phone, national_id);
 
 
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
+
 
 
 

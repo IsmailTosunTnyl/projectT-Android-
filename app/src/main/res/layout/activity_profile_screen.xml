@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileScreen"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:padding="20dp"
+        android:background="@color/lightgreen">
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/profile"
+            android:layout_centerVertical="true">
+
+        </ImageView>
+
+        <TextView
+            android:id="@+id/profileFullName_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mehmet Emre Yılmaz"
+            android:textSize="20sp"
+            android:fontFamily="@font/bungee"
+            android:layout_toRightOf="@id/profile_image"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:textColor="#000">
+
+        </TextView>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_marginTop="-100dp">
+        
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="125dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            app:cardElevation="10dp"
+            app:cardBackgroundColor="@color/lightgreen">
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/ProfilePayment_img"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/wallet"
+                    android:layout_centerHorizontal="true">
+                    
+                </ImageView>
+                
+                <TextView
+                    android:id="@+id/ProfilePayment_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="35TL"
+                    android:includeFontPadding="false"
+                    android:fontFamily="@font/black_ops_one"
+                    android:textSize="20sp"
+                    android:layout_centerInParent="true">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/ProfilePaymentDesc_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Balance"
+                    android:fontFamily="@font/black_ops_one"
+                    android:includeFontPadding="false"
+                    android:textSize="14sp"
+                    android:layout_below="@id/ProfilePayment_txt"
+                    android:layout_centerHorizontal="true">
+
+                </TextView>
+
+
+
+            </RelativeLayout>
+
+            
+            
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="125dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            app:cardElevation="10dp"
+            app:cardBackgroundColor="@color/lightgreen">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/Star_img"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_baseline_star_24"
+                    android:layout_centerHorizontal="true"
+                    >
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/Star_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="60"
+                    android:includeFontPadding="false"
+                    android:fontFamily="@font/black_ops_one"
+                    android:textSize="20sp"
+                    android:layout_centerInParent="true">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/StarDesc_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Star"
+                    android:fontFamily="@font/black_ops_one"
+                    android:includeFontPadding="false"
+                    android:textSize="14sp"
+                    android:layout_below="@id/Star_txt"
+                    android:layout_centerHorizontal="true">
+
+                </TextView>
+
+
+
+            </RelativeLayout>
+
+
+
+        </com.google.android.material.card.MaterialCardView>
+        
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20sp"
+        android:paddingRight="20sp"
+        android:paddingTop="0sp"
+        android:paddingBottom="5sp">
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/TakeCargo_btn"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:text="take delivery cargo"
+            android:background="@color/lightgreen"
+            android:layout_marginLeft="18dp"
+            android:fontFamily="@font/bungee">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/deliverCargo_btn"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:text="deliver the cargo"
+            android:background="@color/lightgreen"
+            android:layout_marginLeft="35dp"
+            android:fontFamily="@font/bungee">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5sp"
+        android:paddingLeft="20sp"
+        android:paddingBottom="20sp"
+        android:paddingRight="20sp"
+        >
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/carryCargo_btn"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:text="Carry of Cargo"
+            android:background="@color/lightgreen"
+            android:layout_marginLeft="18dp"
+            android:fontFamily="@font/bungee">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/empty_btn"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="35dp"
+            android:background="@color/lightgreen"
+            android:contentDescription="@string/app_name"
+            android:text="Maybe LAter">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+
+
+
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+</LinearLayout>

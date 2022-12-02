@@ -31,6 +31,8 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void placeData() {
       fullname_text.setText(API.user.getName() + " " + API.user.getLastname());
+        balance_text.setText(API.user.getBalance() + " TL");
+        star_text.setText(API.user.getStar()+" ");
     }
 
 }

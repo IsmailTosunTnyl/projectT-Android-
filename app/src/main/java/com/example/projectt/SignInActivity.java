@@ -37,7 +37,7 @@ public class SignInActivity extends AppCompatActivity {
                 //mail = username_textInputLayout.getEditText().getText().toString();
                 //password = password_textInputLayout.getEditText().getText().toString();
                 mail = "mail1";
-                password = "1234";
+                password = "Tanyeli6060";
 
                 try {
                     password_encriypted = Encriptions.encText(password);
@@ -56,6 +56,8 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void onFail() {
                         Log.e("Fail", "Fail");
+                        username_textInputLayout.setError("Wrong username or password");
+                        password_textInputLayout.setError("Wrong username or password");
                     }
                 });
 

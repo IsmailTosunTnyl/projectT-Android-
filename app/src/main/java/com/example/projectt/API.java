@@ -28,6 +28,7 @@ public class API {
     static String phone;
     static String address;
     static String nationalID;
+    static User user = new User();
 
     public API(String mail, String password_encrypted, Context context) {
         this.mail = mail;
@@ -249,6 +250,26 @@ public class API {
                     @Override
                     public void onResponse(JSONObject response) {
                         API.isSignedIn = true;
+                        try {
+                            JSONObject jsonArray = response.getJSONObject("user");
+                            user.setId(jsonArray.getInt("ID"));
+                            user.setName(jsonArray.getString("Name"));
+                            user.setLastname(jsonArray.getString("LastName"));
+                            user.setAdress(jsonArray.getString("Adress"));
+                            user.setPhone(jsonArray.getString("Phone"));
+                            user.setNationalID(jsonArray.getString("NationalID"));
+                            user.setMail(jsonArray.getString("Mail"));
+                            user.setBalance(jsonArray.getDouble("Balance"));
+                            user.setStar(jsonArray.getDouble("Star"));
+
+                            Log.e("Sigın Request", user.getName()+" "+user.getLastname());
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
                         //textViewResult.setText("Response is: "+ response.toString());
                         Log.e("Login Request", response.toString());
                         callBack.onSuccess();

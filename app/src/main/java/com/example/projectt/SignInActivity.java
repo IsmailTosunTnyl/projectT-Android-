@@ -49,7 +49,7 @@ public class SignInActivity extends AppCompatActivity {
                 api.signIn(new VolleyCallBack() {
                     @Override
                     public void onSuccess() {
-                        Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
+                        Intent intent = new Intent(SignInActivity.this, ProfileActivity.class);
                         startActivity(intent);
                     }
 

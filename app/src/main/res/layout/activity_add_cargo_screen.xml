@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    android:padding="20dp">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:src="@drawable/image">
+
+    </ImageView>
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/black_ops_one"
+        android:text="Your  cargo  is  safe  with  us"
+        android:textSize="30sp">
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="25dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/receiver_txtinput"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Receiver Mail"
+                    android:textColorHint="#32a852"
+                    app:boxStrokeColor="#32a852">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/capacityOfCargo_txtinput"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Weight"
+                    android:textColorHint="#32a852"
+                    app:boxStrokeColor="#32a852">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/cargoWeight_txtinput"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Capacity"
+                    android:textColorHint="#32a852"
+                    app:boxStrokeColor="#32a852">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number">
+
+                    </com.google.android.material.textfield.TextInputEditText>
+
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cargo Type:"
+                    android:textColor="#32a852">
+
+                </TextView>
+                <Spinner
+                    android:id="@+id/cargoType"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    >
+
+                </Spinner>
+
+                <TextView
+                    android:id="@+id/sourceNode_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Source Node:"
+                    android:textColor="#32a852">
+
+                </TextView>
+                <Spinner
+                    android:id="@+id/source_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    >
+
+                </Spinner>
+                <TextView
+                    android:id="@+id/destinationNode_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Destination Node:"
+                    android:textColor="#32a852">
+
+                </TextView>
+                <Spinner
+                    android:id="@+id/destination_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    >
+
+                </Spinner>
+
+
+
+                <TextView
+                    android:paddingTop="11dp"
+                    android:paddingLeft="150dp"
+                    android:id="@+id/costOfCargo_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="50TL"
+                    android:textSize="20dp"
+                    android:hint="Total Cost:"
+                    android:textColor="#32a852">
+
+                </TextView>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/addCargo_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000"
+        android:text="ACCEPT"
+        android:textColor="#fff"
+        android:textSize="25dp">
+
+    </Button>
+
+
+
+</LinearLayout>

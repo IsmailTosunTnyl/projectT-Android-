@@ -34,10 +34,10 @@ public class SignInActivity extends AppCompatActivity {
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mail = username_textInputLayout.getEditText().getText().toString();
-                password = password_textInputLayout.getEditText().getText().toString();
-                //mail = "mail1";
-                //password = "Tanyeli6060s";
+                //mail = username_textInputLayout.getEditText().getText().toString();
+                //password = password_textInputLayout.getEditText().getText().toString();
+                mail = "mail60";
+                password = "1234";
 
                 try {
                     password_encriypted = Encriptions.encText(password);

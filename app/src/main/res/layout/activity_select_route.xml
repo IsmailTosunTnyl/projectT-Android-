@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectRouteActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <Spinner
+            android:id="@+id/sourceNode_spinner"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:minHeight="48dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:text="Source" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <Spinner
+            android:id="@+id/destinationNode_spinner"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="0dp"
+            android:layout_weight="1"
+            android:minHeight="48dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:text="Destination" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/routeGo_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="172dp"
+        android:layout_marginBottom="15dp"
+        android:text="Button" />
+
+    <Spinner
+        android:id="@+id/routes_spinner"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="0dp"
+
+        android:minHeight="48dp" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:layout_weight="4">
+
+
+
+</LinearLayout>
+
+
+</LinearLayout>

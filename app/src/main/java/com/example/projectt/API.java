@@ -371,7 +371,7 @@ public class API {
 
 
         // Request a string response from the provided URL.
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -392,6 +392,136 @@ public class API {
 
 
     }
+
+
+    public static void closeBox(final VolleyCallBack callBack, int cargoID,int nodeID,String kind) {
+        String url =" ";
+        int method = Request.Method.GET;
+        if (kind.equals("node")){
+         url = baseURL + "cargoDTS/" + mail + "/" + password_encrypted +"/" + cargoID + "/" + nodeID;}
+        else if (kind.equals("destination")){
+            url = baseURL + "cargoTFS/" + mail + "/" + password_encrypted +"/" + cargoID + "/" + nodeID;}
+
+        Log.e("URL",url);
+
+        // Request a string response from the provided URL.
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(method, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //textViewResult.setText("Response is: "+ response.toString());
+                        Log.e("Response Request", response.toString());
+                        callBack.onSuccess();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //textViewResult.setText("That didn't work!"+ error.toString());
+                Log.e("Error Response ", error.toString());
+                callBack.onFail();
+            }
+        });
+
+        queue.add(jsonObjectRequest);
+
+
+
+
+    }
+
+
+    public static void getReceiverCargoTFS(final VolleyCallBack callBack) {
+
+        //String url ="http://
+        String url = baseURL + "cargoownDTS/" + mail + "/" + password_encrypted;
+
+        // Request a string response from the provided URL.
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //textViewResult.setText("Response is: "+ response.toString());
+                        Log.e("Response Request", response.toString());
+                        try {
+                            JSONArray jsonArray = response.getJSONArray("Cargos");
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+
+
+                                int ID = jsonObject.getInt("ID");
+                                int OwnerID = jsonObject.getInt("OwnerID");
+                                int DriverID = jsonObject.getInt("DriverID");
+                                int ReceiverID = jsonObject.getInt("ReceiverID");
+                                String Type = jsonObject.getString("Type");
+                                double Weight = jsonObject.getDouble("Weight");
+                                double Volume = jsonObject.getDouble("Volume");
+                                int NodeID = jsonObject.getInt("NodeID");
+                                int destNodeID = jsonObject.getInt("destNodeID");
+                                int BoxID = jsonObject.getInt("BoxID");
+                                int BoxStatus = jsonObject.getInt("BoxStatus");
+                                String Status = jsonObject.getString("Status");
+                                double Value = jsonObject.getDouble("Value");
+                                Log.e("CargoID", " " + ID);
+                                new CargoItems(ID,Type,Weight,Volume,Value,NodeID,destNodeID,BoxID,BoxStatus,Status);
+
+                            }
+                            callBack.onSuccess();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //textViewResult.setText("That didn't work!"+ error.toString());
+                Log.e("Error owncargo ", error.toString());
+                callBack.onFail();
+            }
+        });
+
+        queue.add(jsonObjectRequest);
+
+
+
+
+
+
+
+
+    }
+
+    public static void cargoTFS(VolleyCallBack callBack, int cargoID, int nodeID) {
+        String url = baseURL + "cargoTFS/" + mail + "/" + password_encrypted +"/" + cargoID + "/" + nodeID;
+
+
+        // Request a string response from the provided URL.
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //textViewResult.setText("Response is: "+ response.toString());
+                        Log.e("Response Request", response.toString());
+                        callBack.onSuccess();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //textViewResult.setText("That didn't work!"+ error.toString());
+                Log.e("Error Response ", error.toString());
+                callBack.onFail();
+            }
+        });
+
+        queue.add(jsonObjectRequest);
+
+
+    }
+
+
+
+
 
 
 }

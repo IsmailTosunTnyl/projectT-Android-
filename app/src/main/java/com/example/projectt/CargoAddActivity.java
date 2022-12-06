@@ -31,6 +31,7 @@ public class CargoAddActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //TODO remove later
         API api = new API("mail60",pass,this);
 
 

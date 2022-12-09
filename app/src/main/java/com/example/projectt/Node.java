@@ -10,13 +10,14 @@ public class Node {
     private double latitude;
     private double longitude;
     public static ArrayList<Node> nodes = new ArrayList<>();
+    public static ArrayList<Node> nodesForRoute = new ArrayList<>();
 
     public Node(int ID, String nodeName, double latitude, double longitude) {
         this.ID = ID;
         this.nodeName = nodeName;
         this.latitude = latitude;
         this.longitude = longitude;
-        Node.nodes.add(this);
+
         Log.e("Node", "Node created "+this.nodeName+nodes.size());
 
     }

@@ -3,6 +3,7 @@ package com.example.projectt;
 import android.content.Context;
 import android.util.Log;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -15,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 public class API {
     static String mail;
@@ -34,7 +36,7 @@ public class API {
         this.mail = mail;
         this.password_encrypted = password_encrypted;
         this.context = context;
-        this.baseURL = "http://192.168.1.31/";
+        this.baseURL = "http://192.168.1.30:80/";
         this.queue = Volley.newRequestQueue(context);
 
 
@@ -62,7 +64,7 @@ public class API {
                                 int ID = jsonObject.getInt("ID");
                                 double latitude = jsonObject.getDouble("latitude");
                                 double longitude = jsonObject.getDouble("longitude");
-                                new Node(ID, name, latitude, longitude);
+                                Node.nodes.add(new Node(ID, name, latitude, longitude));
 
                             }
 
@@ -519,7 +521,83 @@ public class API {
 
     }
 
+    public static void route(final VolleyCallBack callBack, int sourceNodeId, int destNodeID) {
+        String url = baseURL + "route/" + mail + "/" + password_encrypted +"/" + sourceNodeId + "/" + destNodeID;
 
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //textViewResult.setText("Response is: "+ response.toString());
+                        Log.e("Response Request", response.toString());
+                        try {
+                            JSONArray jsonArray = response.getJSONArray("nodes");
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                                String name = jsonObject.getString("nodeName");
+                                int ID = jsonObject.getInt("ID");
+                                double latitude = jsonObject.getDouble("latitude");
+                                double longitude = jsonObject.getDouble("longitude");
+
+                                Node.nodesForRoute.add(new Node(ID, name, latitude, longitude));
+
+                            }
+
+                            JSONArray jsonArray1 = response.getJSONArray("cargos");
+                            for (int i = 0; i < jsonArray1.length(); i++) {
+                                JSONObject jsonObject = jsonArray1.getJSONObject(i);
+
+
+
+                                int ID = jsonObject.getInt("ID");
+                                int OwnerID = jsonObject.getInt("OwnerID");
+                                int DriverID = jsonObject.getInt("DriverID");
+                                int ReceiverID = jsonObject.getInt("ReceiverID");
+                                String Type = jsonObject.getString("Type");
+                                double Weight = jsonObject.getDouble("Weight");
+                                double Volume = jsonObject.getDouble("Volume");
+                                int NodeID = jsonObject.getInt("NodeID");
+                                int destNodeID = jsonObject.getInt("destNodeID");
+                                int BoxID = jsonObject.getInt("BoxID");
+                                int BoxStatus = jsonObject.getInt("BoxStatus");
+                                String Status = jsonObject.getString("Status");
+                                double Value = jsonObject.getDouble("Value");
+                                Log.e("CargoID", " " + ID);
+                                new CargoItems(ID,Type,Weight,Volume,Value,NodeID,destNodeID,BoxID,BoxStatus,Status);
+                                Log.e("Cargosize", " " + CargoItems.cargoItems.size());
+                            }
+
+
+
+
+                            callBack.onSuccess();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //textViewResult.setText("That didn't work!"+ error.toString());
+                Log.e("Error Response ", error.toString());
+                callBack.onFail();
+            }
+        });
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                20000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        queue.add(jsonObjectRequest);
+
+
+
+
+
+
+
+
+    }
 
 
 

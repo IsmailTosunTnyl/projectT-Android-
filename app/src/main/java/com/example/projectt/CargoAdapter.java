@@ -11,12 +11,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class CargoAdapter extends RecyclerView.Adapter<CargoAdapter.MyViewHolder>{
-    private final OnItemClickListener listener;
+    private final OnItemClickListener_RV listener;
     ArrayList<CargoItems> cargoArrayList;
     LayoutInflater inflater;
     //Context context;
 
-    public CargoAdapter(Context context, ArrayList<CargoItems> cargos, OnItemClickListener listener) {
+    public CargoAdapter(Context context, ArrayList<CargoItems> cargos, OnItemClickListener_RV listener) {
         this.cargoArrayList = cargos;
         inflater = LayoutInflater.from(context);
         this.listener = listener;

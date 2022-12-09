@@ -20,17 +20,17 @@ public class OwnCargoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_own_cargo);
         progressBarDTS = findViewById(R.id.progressBarDTS);
-        CargoItems.cargoItems = new ArrayList<>();
+
         String source = getIntent().getStringExtra("source");
 
         if (source.equals("DTS")) {
-
+            CargoItems.cargoItems = new ArrayList<>();
 
             API.getOwnCargoDTS(new VolleyCallBack() {
                 @Override
                 public void onSuccess() {
                     ownCargoRecyclerView = findViewById(R.id.ownCargoRV);
-                    CargoAdapter cargoAdapter = new CargoAdapter(getApplicationContext(), CargoItems.getData(), new OnItemClickListener() {
+                    CargoAdapter cargoAdapter = new CargoAdapter(getApplicationContext(), CargoItems.getData(), new OnItemClickListener_RV() {
                         @Override
                         public void onItemClick(int position) {
                             CargoItems c = CargoItems.cargoItems.get(position);
@@ -72,13 +72,13 @@ public class OwnCargoActivity extends AppCompatActivity {
                 }
             });
         }else if (source.equals("TFS")){
-
+            CargoItems.cargoItems = new ArrayList<>();
             API.getReceiverCargoTFS(new VolleyCallBack() {
                 @Override
                 public void onSuccess() {
 
                     ownCargoRecyclerView = findViewById(R.id.ownCargoRV);
-                    CargoAdapter cargoAdapter = new CargoAdapter(getApplicationContext(), CargoItems.getData(), new OnItemClickListener() {
+                    CargoAdapter cargoAdapter = new CargoAdapter(getApplicationContext(), CargoItems.getData(), new OnItemClickListener_RV() {
                         @Override
                         public void onItemClick(int position) {
                             CargoItems c = CargoItems.cargoItems.get(position);
@@ -122,6 +122,37 @@ public class OwnCargoActivity extends AppCompatActivity {
                 }
             });
 
+        } else if (source.equals("SelectRouteActivity")){
+
+            ownCargoRecyclerView = findViewById(R.id.ownCargoRV);
+            Log.e("cargosize",CargoItems.cargoItems.size()+"");
+            for (int i = 0; i < CargoItems.cargoItems.size(); i++) {
+                Log.e("item", CargoItems.cargoItems.get(i).getType());
+            }
+            CargoAdapter cargoAdapter = new CargoAdapter(getApplicationContext(), CargoItems.getData(), new OnItemClickListener_RV() {
+                @Override
+                public void onItemClick(int position) {
+                    CargoItems c = CargoItems.cargoItems.get(position);
+                    int CargoID = c.getID();
+                    int NodeID = c.getNodeID();
+
+                    // OpenBox
+
+
+
+                }
+            });
+
+            ownCargoRecyclerView.setAdapter(cargoAdapter);
+            progressBarDTS.setVisibility(View.GONE);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+            linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+            linearLayoutManager.scrollToPosition(0);
+            ownCargoRecyclerView.setLayoutManager(linearLayoutManager);
+
+                }
+
+
 
 
 
@@ -135,4 +166,3 @@ public class OwnCargoActivity extends AppCompatActivity {
 
 
     }
-}

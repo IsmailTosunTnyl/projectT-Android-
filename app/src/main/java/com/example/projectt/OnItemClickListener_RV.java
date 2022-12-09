@@ -1,6 +1,6 @@
 package com.example.projectt;
 
-public interface OnItemClickListener {
+public interface OnItemClickListener_RV {
     void onItemClick(int position);
 }
 

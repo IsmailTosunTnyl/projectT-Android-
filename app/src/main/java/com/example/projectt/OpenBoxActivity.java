@@ -14,7 +14,7 @@ public class OpenBoxActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_open_box);
+        setContentView(R.layout.activity_open_box_msg);
 
         init();
         int CargoID = getIntent().getIntExtra("CargoID", 0);

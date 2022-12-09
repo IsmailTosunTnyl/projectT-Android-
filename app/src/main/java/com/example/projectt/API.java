@@ -36,7 +36,7 @@ public class API {
         this.mail = mail;
         this.password_encrypted = password_encrypted;
         this.context = context;
-        this.baseURL = "http://192.168.1.30:80/";
+        this.baseURL = "http://139.144.162.86/";
         this.queue = Volley.newRequestQueue(context);
 
 

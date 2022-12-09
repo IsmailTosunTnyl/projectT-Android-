@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ProfileActivity extends AppCompatActivity {
-    Button DTS_btn,TFS_btn,carry_cargo_btn,choose_cargo_btn;
+    Button DTS_btn,TFS_btn,carry_cargo_btn,choose_cargo_btn,add_cargo_btn,temp_btn;
     TextView balance_text,star_text, fullname_text;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,16 +50,34 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        add_cargo_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // get the own cargo activity
+                Intent intent = new Intent(ProfileActivity.this, CargoAddActivity.class);
+                startActivity(intent);
+            }
+        });
+        temp_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // get the own cargo activity
+                Intent intent = new Intent(ProfileActivity.this, MapsActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
     private void init() {
         DTS_btn = findViewById(R.id.DTS_btn);
         TFS_btn = findViewById(R.id.TFS_btn);
-        carry_cargo_btn = findViewById(R.id.carryCargo_btn);
+        add_cargo_btn = findViewById(R.id.addCargo_btn);
         balance_text = findViewById(R.id.ProfilePayment_txt);
         star_text = findViewById(R.id.Star_txt);
         fullname_text = findViewById(R.id.profileFullName_txt);
         choose_cargo_btn = findViewById(R.id.chooseCargo_btn);
+        temp_btn = findViewById(R.id.temp_btn);
 
     }
 

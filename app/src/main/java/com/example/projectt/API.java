@@ -16,7 +16,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 
 public class API {
     static String mail;
@@ -36,7 +35,8 @@ public class API {
         this.mail = mail;
         this.password_encrypted = password_encrypted;
         this.context = context;
-        this.baseURL = "http://139.144.162.86/";
+        //this.baseURL = "http://139.144.162.86/";
+        this.baseURL = "http://192.168.1.38/";
         this.queue = Volley.newRequestQueue(context);
 
 
@@ -592,13 +592,136 @@ public class API {
 
 
 
+    }
+    // post hashmap to server
+    public static void postHashMap(final VolleyCallBack callBack, String params) {
+        String url = baseURL + "selectedcargos/" + mail + "/" + password_encrypted+"/" + params;
 
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //textViewResult.setText("Response is: "+ response.toString());
+                        Log.e("Response Request", response.toString());
+                        callBack.onSuccess();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //textViewResult.setText("That didn't work!"+ error.toString());
+                Log.e("Error Response ", error.toString());
+                callBack.onFail();
+            }
+        });
 
-
+        queue.add(jsonObjectRequest);
 
 
     }
 
+    public static void listdriverscargo(final VolleyCallBack callBack,String kind) {
+        int method;
+        if (kind.equals("take")) {
+            method = Request.Method.GET;
+        } else {
+            method = Request.Method.POST;
+        }
+
+        String url = baseURL + "listDriverCargos/" + mail + "/" + password_encrypted ;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(method, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //textViewResult.setText("Response is: "+ response.toString());
+                        Log.e("Response Request", response.toString());
+                        CargoItems.cargoItems.clear();
+                        try {
+                            JSONArray jsonArray = response.getJSONArray("Cargos");
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                                int ID = jsonObject.getInt("ID");
+                                int OwnerID = jsonObject.getInt("OwnerID");
+                                int DriverID = jsonObject.getInt("DriverID");
+                                int ReceiverID = jsonObject.getInt("ReceiverID");
+                                String Type = jsonObject.getString("Type");
+                                double Weight = jsonObject.getDouble("Weight");
+                                double Volume = jsonObject.getDouble("Volume");
+                                int NodeID = jsonObject.getInt("NodeID");
+                                int destNodeID = jsonObject.getInt("destNodeID");
+                                int BoxID = jsonObject.getInt("BoxID");
+                                int BoxStatus = jsonObject.getInt("BoxStatus");
+                                String Status = jsonObject.getString("Status");
+                                double Value = jsonObject.getDouble("Value");
+                                Log.e("CargoID", " " + ID);
+                                new CargoItems(ID,Type,Weight,Volume,Value,NodeID,destNodeID,BoxID,BoxStatus,Status);
+
+                            }
+                            callBack.onSuccess();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //textViewResult.setText("That didn't work!"+ error.toString());
+                Log.e("Error owncargo ", error.toString());
+                callBack.onFail();
+            }
+        });
+
+        queue.add(jsonObjectRequest);
+
+}
+
+public static void opendriverbox(final VolleyCallBack callBack, int cargoID, int nodeID,String kind,String takeordelivery ){
+        int methot;
+        String url;
+        if (kind.equals("open")){
+            Log.e("method","get");
+            methot = Request.Method.GET;}
+        else{
+            Log.e("method","post");
+            methot = Request.Method.POST;
+
+        }
+        if (takeordelivery.equals("take")){
+            Log.e("delivery","take");
+             url = baseURL + "driverTakeCargo/" + mail + "/" + password_encrypted +"/" + cargoID + "/" + nodeID;
+        }
+        else{
+            Log.e("delivery","drop");
+             url = baseURL + "driverDropCargo/" + mail + "/" + password_encrypted +"/" + cargoID + "/" + nodeID;
+        }
+
+
+
+    // Request a string response from the provided URL.
+    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(methot, url, null,
+            new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    //textViewResult.setText("Response is: "+ response.toString());
+                    Log.e("Response Request", response.toString());
+                    callBack.onSuccess();
+                }
+            }, new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            //textViewResult.setText("That didn't work!"+ error.toString());
+            Log.e("Error Response ", error.toString());
+            callBack.onFail();
+        }
+    });
+
+    queue.add(jsonObjectRequest);
+
+
+
+}
 
 
 

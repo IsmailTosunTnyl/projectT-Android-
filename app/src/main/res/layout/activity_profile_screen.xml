@@ -251,13 +251,13 @@
         </androidx.appcompat.widget.AppCompatButton>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/later_btn"
+            android:id="@+id/driver_takeCargo_btn"
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:layout_marginLeft="35dp"
             android:background="@color/lightgreen"
             android:contentDescription="@string/app_name"
-            android:text="Ongoing...">
+            android:text="Take Cargo\n(Driver)">
 
         </androidx.appcompat.widget.AppCompatButton>
 
@@ -266,5 +266,15 @@
 
 
     </LinearLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/driver_dropCargo_btn"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="35dp"
+        android:background="@color/lightgreen"
+        android:contentDescription="@string/app_name"
+        android:text="Take Cargo\n(Driver)">
+
+    </androidx.appcompat.widget.AppCompatButton>
 
 </LinearLayout>

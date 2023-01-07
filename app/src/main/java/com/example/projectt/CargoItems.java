@@ -8,6 +8,7 @@ public class CargoItems {
     private double Weight, Volume, Value;
     private int ID,NodeID, DestNodeID, BoxID,BoxStatus;
     public static ArrayList<CargoItems> cargoItems = new ArrayList<>();
+    public static ArrayList<CargoItems> routeItems = new ArrayList<>();
 
    /*
                                 *

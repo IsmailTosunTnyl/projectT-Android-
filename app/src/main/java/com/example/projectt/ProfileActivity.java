@@ -2,6 +2,7 @@ package com.example.projectt;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -10,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ProfileActivity extends AppCompatActivity {
-    Button DTS_btn,TFS_btn,carry_cargo_btn,choose_cargo_btn,add_cargo_btn,temp_btn;
+    Button DTS_btn,TFS_btn,carry_cargo_btn,choose_cargo_btn,add_cargo_btn,temp_btn,driver_take_cargo_btn,driver_drop_cargo_btn;
     TextView balance_text,star_text, fullname_text;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +33,10 @@ public class ProfileActivity extends AppCompatActivity {
         TFS_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
+
                 // get the own cargo activity
                 Intent intent = new Intent(ProfileActivity.this, OwnCargoActivity.class);
                 intent.putExtra("source","TFS" );
@@ -68,6 +73,29 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
+        driver_take_cargo_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // get the own cargo activity
+                Log.e("driver_take_cargo_btn","driver_take_cargo_btn");
+                Intent intent = new Intent(ProfileActivity.this, OwnCargoActivity.class);
+                intent.putExtra("source","DriverTakeCargo" );
+                startActivity(intent);
+            }
+        });
+
+        driver_drop_cargo_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // get the own cargo activity
+                Log.e("driver_drop_cargo_btn","driver_drop_cargo_btn");
+                Intent intent = new Intent(ProfileActivity.this, OwnCargoActivity.class);
+                intent.putExtra("source","DriverDropCargo" );
+                startActivity(intent);
+            }
+        });
+
+
     }
     private void init() {
         DTS_btn = findViewById(R.id.DTS_btn);
@@ -78,6 +106,8 @@ public class ProfileActivity extends AppCompatActivity {
         fullname_text = findViewById(R.id.profileFullName_txt);
         choose_cargo_btn = findViewById(R.id.chooseCargo_btn);
         temp_btn = findViewById(R.id.temp_btn);
+        driver_take_cargo_btn = findViewById(R.id.driver_takeCargo_btn);
+        driver_drop_cargo_btn = findViewById(R.id.driver_dropCargo_btn);
 
     }
 

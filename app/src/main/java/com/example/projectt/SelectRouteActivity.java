@@ -21,12 +21,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SelectRouteActivity extends AppCompatActivity  {
     Spinner sourceNodeSpinner, destinationNodeSpinner;
     Button selectRoute_btn;
     ListView routeListView;
     ProgressBar progressBar;
+    int destID, sourID;
 
     SupportMapFragment mapFragment;
     private ArrayAdapter<String> sourceAdapter, destinationAdapter;
@@ -84,8 +86,8 @@ public class SelectRouteActivity extends AppCompatActivity  {
 
                 String[] dest = destination.split("\\.");
                 String[] sour = source.split("\\.");
-                int destID = Integer.parseInt(dest[0]);
-                int sourID = Integer.parseInt(sour[0]);
+                destID = Integer.parseInt(dest[0]);
+                sourID = Integer.parseInt(sour[0]);
                 CargoItems.cargoItems = new ArrayList<>();
                 API.route(new VolleyCallBack() {
                     @Override
@@ -127,6 +129,21 @@ public class SelectRouteActivity extends AppCompatActivity  {
         routeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    CargoItems.routeItems = new ArrayList<>();
+                    for (CargoItems cargoItem : CargoItems.cargoItems) {
+                        if(cargoItem.getDestNodeID() == destID && cargoItem.getNodeID() == sourID){
+                            CargoItems.routeItems.add(cargoItem);
+                        }
+                    }
+                 //CargoItems.cargoItems = temp;
+
+
+
+
+
+
+
                 Intent intent = new Intent(getApplicationContext(), OwnCargoActivity.class);
                 intent.putExtra("route", position);
                 intent.putExtra("source", "SelectRouteActivity");

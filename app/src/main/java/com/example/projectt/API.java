@@ -36,7 +36,7 @@ public class API {
         this.password_encrypted = password_encrypted;
         this.context = context;
         //this.baseURL = "http://139.144.162.86/";
-        this.baseURL = "http://192.168.1.38/";
+        this.baseURL = "http://192.168.1.30/";
         this.queue = Volley.newRequestQueue(context);
 
 
@@ -215,6 +215,7 @@ public class API {
                             Log.e("AddCargo Request", "Cargo Created");
                         } catch (JSONException e) {
                             e.printStackTrace();
+
                             Log.e("AddCargo Request", e.toString());
                             Log.e("AddCargo Request", "Something Worng I can feel It");
                         }
@@ -585,7 +586,7 @@ public class API {
             }
         });
         jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
-                20000,
+                50000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(jsonObjectRequest);

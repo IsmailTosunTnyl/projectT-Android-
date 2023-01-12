@@ -7,28 +7,40 @@
     android:orientation="vertical"
     tools:context=".SelectRouteActivity">
 
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="158dp"
+        android:layout_height="108dp"
+        android:src="@drawable/image">
+
+    </ImageView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal">
-
-        <Spinner
-            android:id="@+id/sourceNode_spinner"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="0dp"
-            android:minHeight="48dp" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
+            android:layout_marginTop="10dp"
+            android:text="SOURCE:"
+            android:fontFamily="@font/bungee"/>
+
+        <Spinner
+            android:id="@+id/sourceNode_spinner"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="55dp"
             android:layout_marginTop="0dp"
-            android:text="Source" />
+            android:layout_marginBottom="0dp"
+            android:layout_weight="1"
+            android:minHeight="48dp" />
+
+
     </LinearLayout>
 
     <LinearLayout
@@ -37,31 +49,41 @@
         android:layout_weight="1"
         android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/destinationNode_spinner"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="0dp"
-            android:layout_weight="1"
-            android:minHeight="48dp" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:text="Destination" />
+            android:layout_marginTop="10dp"
+            android:text="DESTINATION:"
+            android:fontFamily="@font/bungee"/>
+
+        <Spinner
+            android:id="@+id/destinationNode_spinner"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="0dp"
+            android:layout_weight="1"
+            android:minHeight="48dp" />
+
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/routeGo_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="172dp"
-        android:layout_marginBottom="15dp"
-        android:text="Button" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/routeGo_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="140dp"
+            android:layout_marginRight="140dp"
+            android:text="Show Routes" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -82,6 +104,7 @@
             android:layout_height="match_parent"
             android:visibility="invisible"
             android:descendantFocusability="blocksDescendants" />
+
     </LinearLayout>
 
 

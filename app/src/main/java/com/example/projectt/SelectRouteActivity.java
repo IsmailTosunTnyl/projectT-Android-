@@ -95,15 +95,16 @@ public class SelectRouteActivity extends AppCompatActivity  {
                         progressBar.setVisibility(View.GONE);
                         routeListView.setVisibility(View.VISIBLE);
                         String[] routes = new String[2];
-                        routes[0] = "Source: "+ Node.nodesForRoute.get(0).getNodeName()+" \nDestination: "+Node.nodesForRoute.get(Node.nodesForRoute.size()-1).getNodeName();
-                        String temp ="Source: ";
-                        for (int i = 0; i < Node.nodesForRoute.size()-1; i++) {
-                            temp += Node.nodesForRoute.get(i).getNodeName()+"\nStep: ";
+                        //routes[0] = "Source: "+ Node.nodesForRoute.get(0).getNodeName()+" \nDestination: "+Node.nodesForRoute.get(Node.nodesForRoute.size()-1).getNodeName();
+                        String temp ="Nodes To Visit (Advanced Route) : \n";
+                        for (int i = 0; i < Node.nodesForRoute.size(); i++) {
+                            temp += Node.nodesForRoute.get(i).getNodeName()+"\n";
                         }
-                        temp = temp.substring(0, temp.length()-6);
-                        temp += "Destination: "+Node.nodesForRoute.get(Node.nodesForRoute.size()-1).getNodeName();
+
+                        //temp += "Destination: "+Node.nodesForRoute.get(Node.nodesForRoute.size()-1).getNodeName();
                         routes[1] = temp;
-                        Log.e("Route", routes[0]);
+
+                        routes[0] = "Nodes To Visit (Base Route) : \n  "+ Node.nodesForRoute.get(0).getNodeName();
                         Log.e("Route", routes[1]);
 
                         ArrayAdapter<String> veriAdaptoru=new ArrayAdapter<String>

@@ -13,6 +13,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.projectt.databinding.ActivityMapsBinding;
 
+import java.util.ArrayList;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -47,6 +49,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
             });
         } catch (Exception e) {
+            mapFragment.getMapAsync(MapsActivity.this);
             e.printStackTrace();
         }
 
@@ -64,9 +67,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        String source = getIntent().getStringExtra("source");
+        ArrayList<Node> nnodes;
+        if (source.equals("routeCargo")){
+            nnodes = Node.nodesForRoute;
+
+        }else
+            nnodes = Node.nodes;
 
         // Add a marker in Sydney and move the camera
-        for (Node node : Node.nodes) {
+        for (Node node : nnodes) {
 
             mMap.addMarker(new MarkerOptions().position(new LatLng(node.getLatitude(), node.getLongitude())).title(node.getNodeName()));
         }

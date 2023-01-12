@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:padding="14dp"
         android:layout_marginTop="-100dp">
-        
+
         <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
             android:layout_height="125dp"
@@ -96,8 +96,8 @@
 
             </RelativeLayout>
 
-            
-            
+
+
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
@@ -155,126 +155,169 @@
 
 
         </com.google.android.material.card.MaterialCardView>
-        
+
     </LinearLayout>
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20sp"
-        android:paddingRight="20sp"
-        android:paddingTop="0sp"
-        android:paddingBottom="5sp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/DTS_btn"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:text="Deliver Cargo (Owner)"
-            android:background="@color/lightgreen"
-            android:layout_marginLeft="18dp"
-            android:fontFamily="@font/bungee">
 
-        </androidx.appcompat.widget.AppCompatButton>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/TFS_btn"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:text="Take Cargo (Owner)"
-            android:background="@color/lightgreen"
-            android:layout_marginLeft="35dp"
-            android:fontFamily="@font/bungee">
-
-        </androidx.appcompat.widget.AppCompatButton>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20sp"
+            android:paddingRight="20sp"
+            android:paddingTop="0sp"
+            android:paddingBottom="5sp">
 
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/DTS_btn"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:text="Deliver Cargo (Owner)"
+                android:background="@color/lightgreen"
+                android:layout_marginLeft="18dp"
+                android:fontFamily="@font/bungee">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/TFS_btn"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:text="Take Cargo (Owner)"
+                android:background="@color/lightgreen"
+                android:layout_marginLeft="35dp"
+                android:fontFamily="@font/bungee">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5sp"
+            android:paddingLeft="20sp"
+            android:paddingBottom="5dp"
+            android:paddingRight="20sp"
+            >
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addCargo_btn"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:text="Add New Cargo"
+                android:background="@color/lightgreen"
+                android:layout_marginLeft="18dp"
+                android:fontFamily="@font/bungee">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/temp_btn"
+
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="35dp"
+                android:background="@color/lightgreen"
+                android:contentDescription="@string/app_name"
+                android:text="Map..."
+                android:fontFamily="@font/bungee">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5sp"
+            android:paddingLeft="20sp"
+            android:paddingBottom="5sp"
+            android:paddingRight="20sp">
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/chooseCargo_btn"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:text="Choose Cargo (Driver)"
+                android:background="@color/lightgreen"
+                android:layout_marginLeft="18dp"
+                android:fontFamily="@font/bungee">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/driver_takeCargo_btn"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="35dp"
+                android:background="@color/lightgreen"
+                android:contentDescription="@string/app_name"
+                android:text="Take Cargo\n(Driver)"
+                android:fontFamily="@font/bungee">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5sp"
+            android:paddingLeft="20sp"
+            android:paddingBottom="5dp"
+            android:paddingRight="20sp"
+            >
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/driver_dropCargo_btn"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:text="Driver Drop Cargo"
+                android:background="@color/lightgreen"
+                android:layout_marginLeft="18dp"
+                android:fontFamily="@font/bungee">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/driver_map_btn"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="35dp"
+                android:background="@color/lightgreen"
+                android:contentDescription="@string/app_name"
+                android:textAlignment="center"
+                android:text="Show Map for Driver"
+                android:fontFamily="@font/bungee">
+
+            </androidx.appcompat.widget.AppCompatButton>
+
+        </LinearLayout>
 
 
 
     </LinearLayout>
+    </ScrollView>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="5sp"
-        android:paddingLeft="20sp"
-        android:paddingBottom="5dp"
-        android:paddingRight="20sp"
-        >
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/addCargo_btn"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:text="Add New Cargo"
-            android:background="@color/lightgreen"
-            android:layout_marginLeft="18dp"
-            android:fontFamily="@font/bungee">
-
-        </androidx.appcompat.widget.AppCompatButton>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/temp_btn"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="35dp"
-            android:background="@color/lightgreen"
-            android:contentDescription="@string/app_name"
-            android:text="Map...">
-
-        </androidx.appcompat.widget.AppCompatButton>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="5sp"
-        android:paddingLeft="20sp"
-        android:paddingBottom="20sp"
-        android:paddingRight="20sp"
-        >
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/chooseCargo_btn"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:text="Choose Cargo (Driver)"
-            android:background="@color/lightgreen"
-            android:layout_marginLeft="18dp"
-            android:fontFamily="@font/bungee">
-
-        </androidx.appcompat.widget.AppCompatButton>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/driver_takeCargo_btn"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="35dp"
-            android:background="@color/lightgreen"
-            android:contentDescription="@string/app_name"
-            android:text="Take Cargo\n(Driver)">
-
-        </androidx.appcompat.widget.AppCompatButton>
-
-
-
-
-
-    </LinearLayout>
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/driver_dropCargo_btn"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="35dp"
-        android:background="@color/lightgreen"
-        android:contentDescription="@string/app_name"
-        android:text="Take Cargo\n(Driver)">
-
-    </androidx.appcompat.widget.AppCompatButton>
 
 </LinearLayout>

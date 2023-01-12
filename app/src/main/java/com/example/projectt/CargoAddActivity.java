@@ -1,5 +1,6 @@
 package com.example.projectt;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -82,6 +83,8 @@ public class CargoAddActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess() {
                         Toast.makeText(CargoAddActivity.this, "Cargo added", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(CargoAddActivity.this, ProfileActivity.class);
+                        startActivity(intent);
                     }
 
                     @Override

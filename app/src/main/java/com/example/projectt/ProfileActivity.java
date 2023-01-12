@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ProfileActivity extends AppCompatActivity {
-    Button DTS_btn,TFS_btn,carry_cargo_btn,choose_cargo_btn,add_cargo_btn,temp_btn,driver_take_cargo_btn,driver_drop_cargo_btn;
+    Button DTS_btn,TFS_btn,carry_cargo_btn,choose_cargo_btn,add_cargo_btn,temp_btn,driver_take_cargo_btn,driver_drop_cargo_btn,driver_map_btn;
     TextView balance_text,star_text, fullname_text;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,10 +64,13 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
         temp_btn.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
                 // get the own cargo activity
                 Intent intent = new Intent(ProfileActivity.this, MapsActivity.class);
+                intent.putExtra("source","map" );
                 startActivity(intent);
             }
         });
@@ -80,6 +83,17 @@ public class ProfileActivity extends AppCompatActivity {
                 Log.e("driver_take_cargo_btn","driver_take_cargo_btn");
                 Intent intent = new Intent(ProfileActivity.this, OwnCargoActivity.class);
                 intent.putExtra("source","DriverTakeCargo" );
+                startActivity(intent);
+            }
+        });
+
+        driver_map_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // get the own cargo activity
+                Log.e("driver_map_btn","driver_map_btn");
+                Intent intent = new Intent(ProfileActivity.this, MapsActivity.class);
+                intent.putExtra("source","routeCargo" );
                 startActivity(intent);
             }
         });
@@ -108,6 +122,7 @@ public class ProfileActivity extends AppCompatActivity {
         temp_btn = findViewById(R.id.temp_btn);
         driver_take_cargo_btn = findViewById(R.id.driver_takeCargo_btn);
         driver_drop_cargo_btn = findViewById(R.id.driver_dropCargo_btn);
+        driver_map_btn = findViewById(R.id.driver_map_btn);
 
     }
 

@@ -36,7 +36,8 @@ public class API {
         this.password_encrypted = password_encrypted;
         this.context = context;
         //this.baseURL = "http://139.144.162.86/";
-        this.baseURL = "http://192.168.1.30/";
+        this.baseURL = "http://139.144.161.179:8080/";
+        //this.baseURL = "http://192.168.224.97:80/";
         this.queue = Volley.newRequestQueue(context);
 
 
@@ -199,7 +200,7 @@ public class API {
     public static void addCargo(final VolleyCallBack callBack, String receiverMail, String type, String weight, String volume, int nodeID, int destNodeID, String status) {
 
 
-        String url = baseURL + "cargoadd/" + mail + "/" + password_encrypted +  "/" + receiverMail + "/" + type + "/" + weight + "/" + volume + "/" + nodeID + "/"+destNodeID+ "/" + status;
+        String url = "http://192.168.224.97:8080/" + "cargoadd/" + mail + "/" + password_encrypted +  "/" + receiverMail + "/" + type + "/" + weight + "/" + volume + "/" + nodeID + "/"+destNodeID+ "/" + status;
         Log.e("AddCargo Request", "Request Sent");
         Log.e("Error",url);
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, null,
@@ -316,7 +317,7 @@ public class API {
 
 
         //String url ="http://
-        String url = baseURL + "cargoownDTS/" + mail + "/" + password_encrypted;
+        String url = baseURL + "cargoownDTS/" + "ismail@mail.com" + "/" + password_encrypted;
 
         // Request a string response from the provided URL.
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -596,7 +597,7 @@ public class API {
     }
     // post hashmap to server
     public static void postHashMap(final VolleyCallBack callBack, String params) {
-        String url = baseURL + "selectedcargos/" + mail + "/" + password_encrypted+"/" + params;
+        String url = "http://192.168.224.97:8080/" + "selectedcargos/" + mail + "/" + password_encrypted+"/" + params;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, null,
                 new Response.Listener<JSONObject>() {
@@ -628,7 +629,7 @@ public class API {
             method = Request.Method.POST;
         }
 
-        String url = baseURL + "listDriverCargos/" + mail + "/" + password_encrypted ;
+        String url = baseURL + "listDriverCargos/" + "ismail@mail.com" + "/" + password_encrypted ;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(method, url, null,
                 new Response.Listener<JSONObject>() {

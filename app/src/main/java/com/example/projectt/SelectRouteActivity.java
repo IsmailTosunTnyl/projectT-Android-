@@ -92,6 +92,7 @@ public class SelectRouteActivity extends AppCompatActivity  {
                 API.route(new VolleyCallBack() {
                     @Override
                     public void onSuccess() {
+
                         progressBar.setVisibility(View.GONE);
                         routeListView.setVisibility(View.VISIBLE);
                         String[] routes = new String[2];
@@ -103,8 +104,8 @@ public class SelectRouteActivity extends AppCompatActivity  {
 
                         //temp += "Destination: "+Node.nodesForRoute.get(Node.nodesForRoute.size()-1).getNodeName();
                         routes[1] = temp;
-
-                        routes[0] = "Nodes To Visit (Base Route) : \n  "+ Node.nodesForRoute.get(0).getNodeName();
+                        temp="";
+                        routes[0] = "\nNodes To Visit (Base Route) : \n"+ sour[1]+"\n";
                         Log.e("Route", routes[1]);
 
                         ArrayAdapter<String> veriAdaptoru=new ArrayAdapter<String>
@@ -147,6 +148,7 @@ public class SelectRouteActivity extends AppCompatActivity  {
 
                 Intent intent = new Intent(getApplicationContext(), OwnCargoActivity.class);
                 intent.putExtra("route", position);
+                Log.e("Route Position ", position+"");
                 intent.putExtra("source", "SelectRouteActivity");
                 startActivity(intent);
             }
